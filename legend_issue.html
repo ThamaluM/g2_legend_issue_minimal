@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G2 Legend Issue</title>
+    <script src="https://gw.alipayobjects.com/os/lib/antv/g2/4.2.5/dist/g2.min.js"></script>
+</head>
+
+<body>
+    <div id="chart"></div>
+    See! If you have already disselected an item clicking on the legend, when you try to disselect another item the former automatically get selected again.
+    (Some OLAP cube APIs output JSONs with keys having '.', so it will be really helpful if you fix the bug.)
+    <script>
+        const data = [{
+            "business_dim.name": "Pizza Hut",
+            "day": 1,
+            "score": 30
+        }, {
+            "business_dim.name": "Burgher King",
+            "day": 1,
+            "score": 50
+        }, {
+            "business_dim.name": "Starbucks",
+            "day": 1,
+            "score": 10
+        }, {
+            "business_dim.name": "Dunking Daughnuts",
+            "day": 1,
+            "score": 25
+        }, {
+            "business_dim.name": "Pizza Hut",
+            "day": 2,
+            "score": 28
+        }, {
+            "business_dim.name": "Burgher King",
+            "day": 2,
+            "score": 16
+        }, {
+            "business_dim.name": "Starbucks",
+            "day": 2,
+            "score": 4
+        }, {
+            "business_dim.name": "Dunking Daughnuts",
+            "day": 2,
+            "score": 10
+        }];
+        const chart = new G2.Chart({
+            container: "chart",
+            height: 600,
+            width: 600
+        });
+        chart.data(data)
+        chart.line().position("day*score").color("business_dim.name");
+        chart.render();
+    </script>
+
+</body>
+
+</html>
